@@ -1,0 +1,77 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message 0x701 msg_req;
+  
+}
+
+//Code for default session
+
+on key 'a'
+{
+  msg_req.dlc = 8;
+  msg_req.byte(0) = 0x02;
+  msg_req.byte(1) = 0x10;
+  msg_req.byte(2) = 0x01;
+  output(msg_req);
+}
+
+//Code for program session
+
+on key 'b'
+{
+  msg_req.dlc = 8;
+  msg_req.byte(0) = 0x02;
+  msg_req.byte(1) = 0x10;
+  msg_req.byte(2) = 0x02;
+  output(msg_req);
+}
+
+//Code for Extended session
+
+on key 'c'
+{
+  msg_req.dlc = 0x8;
+  msg_req.byte(0) = 0x02;
+  msg_req.byte(1) = 0x10;
+  msg_req.byte(2) = 0x03;
+  output(msg_req);
+}
+
+//Code for wrong sub function
+
+on key 'd'
+{
+  msg_req.dlc = 8;
+  msg_req.byte(0) = 0x02;
+  msg_req.byte(1) = 0x10;
+  msg_req.byte(2) = 0x07;
+  output(msg_req);
+}
+
+//Code for wrong service ID
+
+on key 'e'
+{
+  msg_req.dlc = 8;
+  msg_req.byte(0) = 0x02;
+  msg_req.byte(1) = 0x99;
+  msg_req.byte(2) = 0x07;
+  output(msg_req);
+}
+
+//Code for Invalid data length
+
+on key 'f'
+{
+  msg_req.dlc = 8;
+  msg_req.byte(0) = 0x05;
+  msg_req.byte(1) = 0x10;
+  msg_req.byte(2) = 0x03;
+  output(msg_req);
+}
