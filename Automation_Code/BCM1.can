@@ -1,0 +1,31 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  int c = 0;
+}
+on key *
+{
+  c = 0;
+  setTimer(t1, 1000);
+}
+on timer t1
+{
+  if(c>5)
+  {
+    cancelTimer(t1);
+  }
+  else
+  {
+    output(b);
+    setTimer(t1, 1000);
+    c++; 
+  }
+}
+  

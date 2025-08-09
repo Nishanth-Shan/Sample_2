@@ -1,0 +1,38 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+on message BCMMessage
+{
+  if (this.BCM_Signal == 1)
+  {
+    @Indicator1::Sys_Green = 1;
+    @Indicator1::Sys_Red = 0;
+    @Indicator1::Sys_Yellow = 0;
+  }
+  else if (this.BCM_Signal == 2)
+  {
+    @Indicator1::Sys_Green = 0;
+    @Indicator1::Sys_Red = 0;
+    @Indicator1::Sys_Yellow = 1;    
+  }
+  else if (this.BCM_Signal == 3)
+  {
+    @Indicator1::Sys_Green = 0;
+    @Indicator1::Sys_Red = 1;
+    @Indicator1::Sys_Yellow = 0;    
+  }
+  else
+  {
+    @Indicator1::Sys_Green = 0;
+    @Indicator1::Sys_Red = 0;
+    @Indicator1::Sys_Yellow = 0;    
+  }
+}
+
